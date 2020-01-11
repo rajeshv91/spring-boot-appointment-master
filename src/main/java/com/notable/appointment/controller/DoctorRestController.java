@@ -35,7 +35,7 @@ public class DoctorRestController {
 	    
 	    /** GET request to return specific appointments 
 	     * @throws Exception **/
-		@RequestMapping(path = "/{doctorID}", method = RequestMethod.GET)
+		@RequestMapping(path = "/{doctorId}", method = RequestMethod.GET)
 		public Doctor findById(@PathVariable Long doctorId) throws Exception {
 			return doctorService.getById(doctorId);
 		}
