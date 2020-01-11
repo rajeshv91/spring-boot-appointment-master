@@ -1,12 +1,15 @@
 package com.notable.appointment.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.notable.appointment.model.Appointment;
 import com.notable.appointment.model.Doctor;
 import com.notable.appointment.service.DoctorService;
 
@@ -29,5 +32,12 @@ public class DoctorRestController {
 	    List<Doctor> findAll() {
 	        return doctorService.findAll();
 	    }
+	    
+	    /** GET request to return specific appointments 
+	     * @throws Exception **/
+		@RequestMapping(path = "/{doctorID}", method = RequestMethod.GET)
+		public Doctor findById(@PathVariable Long doctorId) throws Exception {
+			return doctorService.getById(doctorId);
+		}
 
 }

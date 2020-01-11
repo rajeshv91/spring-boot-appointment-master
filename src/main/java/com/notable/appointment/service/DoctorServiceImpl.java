@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.notable.appointment.exception.ResourceNotFoundException;
+import com.notable.appointment.model.Appointment;
 import com.notable.appointment.model.Doctor;
 import com.notable.appointment.repository.DoctorRepository;
 
@@ -29,7 +30,7 @@ public class DoctorServiceImpl implements DoctorService{
 	}
 
 	@Override
-	public Doctor getById(Long doctorId) throws ResourceNotFoundException {
+	public Doctor getById(Long doctorId) throws RuntimeException {
 		// TODO Auto-generated method stub
 		Doctor doctor = null;
 		try {
@@ -40,5 +41,7 @@ public class DoctorServiceImpl implements DoctorService{
 		}
 		return doctor;
 	}
+	
+	 
 
 }
