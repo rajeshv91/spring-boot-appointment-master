@@ -1,16 +1,15 @@
 package com.notable.appointment.model;
 
-import lombok.Data;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import java.math.BigDecimal;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.time.LocalDate;
+import lombok.Data;
 
 @Data
 @Entity
@@ -21,8 +20,9 @@ public class Appointment {
     private LocalDate appointmentDate;
     private Time appointmentStartTime;
     
-    @OneToOne
-    private Doctor nameOfDoctor;
+    @OneToOne(targetEntity =Doctor.class )
+	private Doctor doctorId;
+    
     private AppointmentStatus status = AppointmentStatus.NewPatient;
     
 
@@ -35,22 +35,22 @@ public class Appointment {
         this.appointmentDate = appointmentDate;
         this.appointmentStartTime = appointmentStartTime;
         
-        this.nameOfDoctor = nameOfDoctor;
+        this.doctorId = nameOfDoctor;
         this.status = status;
        
     }
 
-    public Appointment(LocalDate appointmentDate, Time appointmentStartTime, Doctor nameOfDoctor) {
+    public Appointment(LocalDate appointmentDate, Time appointmentStartTime, Doctor optional) {
         this.appointmentDate = appointmentDate;
         this.appointmentStartTime = appointmentStartTime;
         
-        this.nameOfDoctor = nameOfDoctor;
+        this.doctorId = optional;
         
     }
 
     public Appointment(LocalDate appointmentDate, Doctor nameOfDoctor) {
         this.appointmentDate = appointmentDate;
-        this.nameOfDoctor = nameOfDoctor;
+        this.doctorId = nameOfDoctor;
        
     }
 
@@ -89,11 +89,11 @@ public class Appointment {
     
 
     public Doctor getNameOfDoctor() {
-        return nameOfDoctor;
+        return doctorId;
     }
 
     public void setNameOfDoctor(Doctor nameOfDoctor) {
-        this.nameOfDoctor = nameOfDoctor;
+        this.doctorId = nameOfDoctor;
     }
 
     public AppointmentStatus getStatus() {

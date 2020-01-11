@@ -12,7 +12,7 @@ public interface AppointmentService {
 
     List<Appointment> findAll();
 
-    List<Appointment> findByDateRangeSortedByPrice(LocalDate startDate, LocalDate endDate);
+    //List<Appointment> findByDateRangeSortedByPrice(LocalDate startDate, LocalDate endDate);
 
     Appointment create(Appointment appointment);
 

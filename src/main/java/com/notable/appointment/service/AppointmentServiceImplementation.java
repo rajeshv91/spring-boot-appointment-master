@@ -32,10 +32,12 @@ public class AppointmentServiceImplementation implements AppointmentService {
         return appointmentRepository.findAll();
     }
 
-    @Override
-    public List<Appointment> findByDateRangeSortedByPrice(LocalDate startDate, LocalDate endDate) {
-        return appointmentRepository.findAllByAppointmentDateBetweenOrderByPriceAsc(startDate, endDate);
-    }
+	/*
+	 * @Override public List<Appointment> findByDateRangeSortedByPrice(LocalDate
+	 * startDate, LocalDate endDate) { return
+	 * appointmentRepository.findAllByAppointmentDateBetweenOrderByPriceAsc(
+	 * startDate, endDate); }
+	 */
 
     @Override
     public Appointment create(Appointment appointment) {

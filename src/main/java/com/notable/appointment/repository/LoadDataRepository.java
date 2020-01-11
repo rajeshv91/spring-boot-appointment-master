@@ -25,10 +25,20 @@ public class LoadDataRepository {
     
     @Autowired
     private DoctorService doctorService;
+    
+    @Bean
+    CommandLineRunner initDatabase(DoctorRepository doctorRepository) {
+        return args -> {
+           
+            
+        };
+    }
 
     @Bean
-    CommandLineRunner initDatabase(AppointmentRepository appointmentRepository) {
+    CommandLineRunner initDatabase(AppointmentRepository appointmentRepository, DoctorRepository doctorRepository) {
         return args -> {
+        	 logger.info("Preloading " + doctorRepository.save(new Doctor("Ändres","Marcus")));
+             logger.info("Preloading " + doctorRepository.save(new Doctor("Jack","Sparrow")));
             logger.info("Preloading " + appointmentRepository.save(new Appointment(LocalDate.of(2019, 2, 3), Time.valueOf("11:00:00"),  doctorService.getById((long) 1))));
             logger.info("Preloading " + appointmentRepository.save(new Appointment(LocalDate.of(2019, 2, 15), Time.valueOf("14:00:00"),  doctorService.getById((long) 1))));
             logger.info("Preloading " + appointmentRepository.save(new Appointment(LocalDate.of(2019, 1, 10), Time.valueOf("08:00:00"), doctorService.getById((long) 1))));
