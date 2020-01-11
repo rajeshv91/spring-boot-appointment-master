@@ -9,5 +9,5 @@ public interface DoctorService {
 
 	Optional<Doctor> findById(Long doctorId);
 	 List<Doctor> findAll();
-	 public Doctor getById(Long doctorId);
+	 public Doctor getById(Long doctorId) throws Exception;
 }
